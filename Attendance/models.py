@@ -1,14 +1,24 @@
 from django.db import models
+import uuid
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 # Create your models here.
-class UserProfile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-    FCMid = models.CharField()
+class User(AbstractUser):
+    is_admin = models.BooleanField()
+    
 
 class AttendanceTable(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateTimeField()
-    location = models.OneToOneField("Attendance.Attendance", on_delete=models.CASCADE)
     location_verified = models.NullBooleanField()
     voice_verified = models.NullBooleanField()
     face_verified = models.NullBooleanField()
+
+class Centers(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=15)
+    center_id = models.UUIDField( 
+         primary_key = True, 
+         default = uuid.uuid4, 
+         editable = False)

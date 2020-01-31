@@ -18,9 +18,11 @@ from django.urls import path
 from rest_framework import routers
 from Location import views
 from django.conf.urls import include
+from rest_framework.authtoken.views import obtain_auth_token
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/test', views.test.as_view() )
+    path('api/v1/test/', views.test.as_view()),
+    path('api/v1/get-auth/', obtain_auth_token, name='api_token_auth'),
 ]
