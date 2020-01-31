@@ -19,10 +19,8 @@ from rest_framework import routers
 from Location import views
 from django.conf.urls import include
 
-# router = routers.DefaultRouter()
-# router.register(r'test', views.test.as_view())
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/v1/', include(router.urls))
+    path('api/v1/test', views.test.as_view() )
 ]
