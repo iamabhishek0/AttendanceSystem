@@ -37,10 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "fcm_django",
-    "Location",
-    "rest_framework",
+    'fcm_django',
+    'Location',
+    'Attendance',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication', 
+    ],
+}
+
+AUTH_USER_MODEL = 'Attendance.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
