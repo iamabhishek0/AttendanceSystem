@@ -50,7 +50,7 @@ REST_FRAMEWORK = {
     ],
 }
 
-AUTH_USER_MODEL = 'Attendance.User'
+# AUTH_USER_MODEL = 'Attendance.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
